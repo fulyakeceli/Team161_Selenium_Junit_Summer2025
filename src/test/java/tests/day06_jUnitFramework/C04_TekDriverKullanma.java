@@ -9,10 +9,14 @@ import java.time.Duration;
 public class C04_TekDriverKullanma {
     WebDriver driver;
 
+    // tum scope'lardan kullanabilmek icin obje olusturmayi class levelda yaptik
+
     public void setUp(){
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
+
+        // atamayi burada yaptik
     }
 
     @Test

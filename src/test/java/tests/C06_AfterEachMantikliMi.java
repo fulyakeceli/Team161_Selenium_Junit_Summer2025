@@ -85,6 +85,8 @@ public class C06_AfterEachMantikliMi {
         }
         // sayfayi kapatin
 
+        driver.quit();
+
     }
 
 
