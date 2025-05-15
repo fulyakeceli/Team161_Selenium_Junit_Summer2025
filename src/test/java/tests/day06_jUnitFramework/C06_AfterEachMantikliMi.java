@@ -33,7 +33,7 @@ public class C06_AfterEachMantikliMi {
             YAANNNNIIII failed olan her test method'u icin browser acik kalir
 
          Bu iki sebepten dolayi
-         ister tekbir test() olsun
+         ister tek bir test() olsun
          isterse cok test() olsun
          Before ve After notasyonlarini KULLANMALIYIZ
 
@@ -85,9 +85,10 @@ public class C06_AfterEachMantikliMi {
         }
         // sayfayi kapatin
 
-        driver.quit();
+
 
     }
 
 
 }
+

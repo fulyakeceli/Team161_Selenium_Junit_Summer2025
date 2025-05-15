@@ -35,7 +35,7 @@ public class C05_BeforeEach_AfterEach {
     WebDriver driver;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
@@ -43,13 +43,13 @@ public class C05_BeforeEach_AfterEach {
     }
 
     @AfterEach
-    public void teardown(){
+    public void teardown() {
         driver.quit();
         System.out.println("teardown() calisti");
     }
 
     @Test
-    public void testotomasyonuTesti(){
+    public void testotomasyonuTesti() {
         // testotomasyonu sitesine gidin
         driver.get("https://testotomasyonu.com");
 
@@ -57,7 +57,7 @@ public class C05_BeforeEach_AfterEach {
         String actualUrl = driver.getCurrentUrl();
         String expectedUrlIcerik = "testotomasyonu";
 
-        if (actualUrl.contains(expectedUrlIcerik)){
+        if (actualUrl.contains(expectedUrlIcerik)) {
             System.out.println("Testotomasyonu testi PASSED");
         } else {
             System.out.println("Testotomasyonu testi FAILED");
@@ -67,7 +67,7 @@ public class C05_BeforeEach_AfterEach {
     }
 
     @Test
-    public void wisequarterTest(){
+    public void wisequarterTest() {
         // wisequarter sitesine gidin
         driver.get("https://wisequarter.com");
 
@@ -76,7 +76,7 @@ public class C05_BeforeEach_AfterEach {
         String actualTitle = driver.getTitle();
         String expectedTitleIcerik = "Wise Quarter";
 
-        if (actualTitle.contains(expectedTitleIcerik)){
+        if (actualTitle.contains(expectedTitleIcerik)) {
             System.out.println("Wise Quarter testi PASSED");
         } else {
             System.out.println("Wise Quarter testi FAILED");
@@ -87,7 +87,7 @@ public class C05_BeforeEach_AfterEach {
     }
 
     @Test
-    public void youtubeTest(){
+    public void youtubeTest() {
         // YouTube sitesine gidin
         driver.get("https://youtube.com");
 
@@ -95,7 +95,7 @@ public class C05_BeforeEach_AfterEach {
         String actualTitle = driver.getTitle();
         String expectedTitle = "Youtube";
 
-        if (actualTitle.equals(expectedTitle)){
+        if (actualTitle.equals(expectedTitle)) {
             System.out.println("YouTube testi PASSED");
         } else {
             System.out.println("YouTube testi FAILED");
