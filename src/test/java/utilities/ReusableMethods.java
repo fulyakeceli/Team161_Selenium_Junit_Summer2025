@@ -5,23 +5,23 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-import static jdk.internal.org.jline.reader.impl.LineReaderImpl.CompletionType.List;
-
 public class ReusableMethods {
 
-    public static void bekle (int saniye) {
+    public static void bekle(int saniye)  {
 
         try {
-            Thread.sleep(saniye * 1000);
+            Thread.sleep(saniye*1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
     }
 
-       // verilen WebElementşelerden olusan bir listedeki herbir webelementi ele alip
-       // webelement uzerindeki yazıyı olusturacagımız bir listeye ekleyip
-       // tum elementler elden gectikten sonra stringlerden olusan
-        // listeyi donduren bir method olusturun
+    // verilen Webelement'lerden olusan bir listedeki
+    // herbir webelement'i ele alip
+    // web element uzerindeki yaziyi, olusturacagimiz bir listeye ekleyip,
+    // tum elementler elden gectikten sonra
+    // String'lerden olusan listeyi DONDUREN bir method olusturun
 
     public static List<String> stringListeDonustur (List<WebElement> webElementList){
 
@@ -34,17 +34,6 @@ public class ReusableMethods {
 
         return stringList;
 
-
-        }
-
-
-
-
-
-
-
     }
-
-
 
 }
