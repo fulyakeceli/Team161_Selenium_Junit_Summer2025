@@ -88,7 +88,7 @@ public class C02_JsAlerts extends TestBase_All {
         String actualSonucYazisi = driver.findElement(By.id("result"))
                 .getText();
 
-        Assertions.assertTrue(actualSonucYazisi.contains(expectedSonucYazisi)););
+        Assertions.assertTrue(actualSonucYazisi.contains(expectedSonucYazisi));
 
 
     }
