@@ -1,9 +1,11 @@
 package utilities;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class ReusableMethods {
 
@@ -34,6 +36,25 @@ public class ReusableMethods {
 
         return stringList;
 
+    }
+
+
+    public static void urlIleWindowGecisi(WebDriver driver, String hedefUrl){
+
+
+
+        Set<String> acikOlabTumWindowlarinWhdSeti = driver.getWindowHandles();
+
+
+        for (String eachWhd:acikOlabTumWindowlarinWhdSeti){
+
+            driver.switchTo().window(eachWhd);
+            String actualUrl = driver.getCurrentUrl();
+
+            if (hedefUrl.equals(actualUrl)){
+                break;
+            }
+        }
     }
 
 }
