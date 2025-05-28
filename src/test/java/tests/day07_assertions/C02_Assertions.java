@@ -39,7 +39,7 @@ public class C02_Assertions {
 
         // actualUrl expectedurlIcerik'ini iceriyor mu
         // sonuc true ise => test PASSED
-        // sonuc false ise =>
+        // sonuc false ise => test FAILED
 
         Assertions.assertTrue(actualUrl.contains(expectedUrlIcerik),"Url istenen icerigi barindirmiyor");
 

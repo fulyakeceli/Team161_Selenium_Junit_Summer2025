@@ -57,6 +57,7 @@ public class C02_JsAlerts extends TestBase_All {
 
         String expectedSonucYazisi = "You clicked: Cancel";
         String actualSonucYazisi =  driver.findElement(By.id("result")).getText();
+        //normal websayfasında oldugu icin locate etmemiz lazım
 
         Assertions.assertEquals(expectedSonucYazisi,actualSonucYazisi);
 
