@@ -1,0 +1,99 @@
+package tests.day16_webtables_excelOtomasyon;
+
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class C03_ReadExcel {
+
+    @Test
+    public void test01() throws IOException {
+
+        //Gerekli ayarlamalari yapip, ulkeler excelindeki Sayfa1’e gidin
+
+        String dosyaYolu = "src/test/java/tests/day16_webtables_excelOtomasyon/ulkeler.xlsx";
+        FileInputStream fileInputStream = new FileInputStream(dosyaYolu);
+
+        Workbook workbook = WorkbookFactory.create(fileInputStream);
+        Sheet sayfa1 = workbook.getSheet("Sayfa1");
+
+        // - 1.satirdaki 2.hucreye gidelim ve yazdirin
+        System.out.println(sayfa1.getRow(0).getCell(1)); //1. satir 2. hucre //Baskent (İngilizce)
+
+        // - 1.satirdaki 2.hucreyi bir string degiskene atayin
+        String satir1Hucre2 = sayfa1.getRow(0).getCell(1).getStringCellValue();
+        System.out.println("satir1Hucre2 data : " + satir1Hucre2);
+
+        // ve degerinin “Başkent (İngilizce)” oldugunu test edin
+        String expectedCellValue = "Başkent (İngilizce)";
+        String actualCellValue = satir1Hucre2;
+
+        Assertions.assertEquals(expectedCellValue,actualCellValue);
+
+
+        //- 2.satir 4.cell’in afganistan’in baskenti “Kabil” oldugunu test edin
+        expectedCellValue = "Kabil";
+        actualCellValue = sayfa1.getRow(1).getCell(3).getStringCellValue();
+
+        Assertions.assertEquals(expectedCellValue,actualCellValue);
+
+
+        // - Ulke sayisinin 190 oldugunu test edin
+        System.out.println(sayfa1.getLastRowNum()); // 190
+        // index kullandigi icin satir sayisini bulmak istersek 1 eklemeliyiz 190+1 ==> 191 satir var
+
+        int expectedUlkeSayisi = 190;
+        int actualUlkeSayisi = sayfa1.getLastRowNum() + 1  -1 ;
+        // +1 index sayisindan satir sayisini bulabilmek icin
+        // -1 excel'deki ilk satir ulke ismi degil baslik
+
+        Assertions.assertEquals(expectedUlkeSayisi,actualUlkeSayisi);
+
+
+        // - Fiziki olarak kullanilan satir sayisinin 191 oldugunu test edin
+
+        int expectedKullanilanSatirSayisi = 191;
+        int actualKullanilanSatirSayisi = sayfa1.getPhysicalNumberOfRows();
+
+        Assertions.assertEquals(expectedKullanilanSatirSayisi,actualKullanilanSatirSayisi);
+
+        // - Ingilizce ismi Netherland olan ulkenin baskentinin turkce Amsterdam oldugunu test edin
+
+        for (int i = 0; i <=sayfa1.getLastRowNum() ; i++) {
+
+            String satirdakiIngilizceUlkeIsmi = sayfa1.getRow(i).getCell(0).getStringCellValue();
+
+            String satirdakiTurkceBaskentIsmi = sayfa1.getRow(i).getCell(3).getStringCellValue();
+
+            if (satirdakiIngilizceUlkeIsmi.equalsIgnoreCase("Netherlands")){
+                Assertions.assertEquals(satirdakiTurkceBaskentIsmi, "Amsterdam");
+            }
+
+        }
+
+
+
+        //- Turkce baskent isimlerinde Ankara bulundugunu test edin
+        boolean ankaraVarMi = false;
+
+        for (int i = 0; i <=sayfa1.getLastRowNum() ; i++) {
+            String satirdakiTurkceBaskentIsmi = sayfa1.getRow(i).getCell(3).getStringCellValue();
+
+            if (satirdakiTurkceBaskentIsmi.equalsIgnoreCase("Ankara")){
+                ankaraVarMi = true;
+                break;
+            }
+
+        }
+        Assertions.assertEquals(ankaraVarMi,true);
+
+        Assertions.assertTrue(ankaraVarMi);
+
+    }
+}
