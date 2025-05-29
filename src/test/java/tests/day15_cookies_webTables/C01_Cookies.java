@@ -14,15 +14,13 @@ import java.util.Set;
 public class C01_Cookies extends TestBase_Each {
 
 
-
     @Test
-    public void test01(){
+    public void test01() {
 
         //1- google anasayfaya gidin
         driver.get("https://www.google.com");
 
         ReusableMethods.bekle(1);
-
 
 
         //2- cookies cikarsa kabul edin
@@ -40,8 +38,7 @@ public class C01_Cookies extends TestBase_Each {
         int expectedMinCookieSayisi = 3;
         int actualCookieSayisi = cookieSet.size();
 
-        Assertions.assertTrue(actualCookieSayisi>= expectedMinCookieSayisi);
-
+        Assertions.assertTrue(actualCookieSayisi >= expectedMinCookieSayisi);
 
 
         //4- sayfadaki cookie'leri yazdirin
@@ -50,7 +47,7 @@ public class C01_Cookies extends TestBase_Each {
         // cookieleri daha duzenli sekilde yazdirmak icin for each loop kullanmaliyiz
 
         int siraNo = 1;
-        for(Cookie eachCookie : cookieSet){
+        for (Cookie eachCookie : cookieSet) {
 
             System.out.println(siraNo + ". cookie: \n" + eachCookie);
             siraNo++;
@@ -71,8 +68,8 @@ public class C01_Cookies extends TestBase_Each {
 
         //5- cookie'lerin isimlerini yazdirin
 
-         siraNo = 1;
-        for(Cookie eachCookie : cookieSet){
+        siraNo = 1;
+        for (Cookie eachCookie : cookieSet) {
 
             System.out.println(siraNo + ". cookie: \n" + eachCookie.getName());
             siraNo++;
@@ -86,44 +83,41 @@ public class C01_Cookies extends TestBase_Each {
              */
 
 
-
-
-
-        //6- ismi “en sevdigim cookie” ve degeri “cikolatali” olan bir cookie olusturun ve sayfaya ekleyin
+            //6- ismi “en sevdigim cookie” ve degeri “cikolatali” olan bir cookie olusturun ve sayfaya ekleyin
             Cookie cookieObjesi = new Cookie("en sevdigim cookie", "cikolatali");
             driver.manage().addCookie(cookieObjesi);
 
 
-        //7- eklediginiz cookie’nin sayfaya eklendigini test edin
-        //   alternatif yontemler
+            //7- eklediginiz cookie’nin sayfaya eklendigini test edin
+            //   alternatif yontemler
 
-        //   A- tum cookieleri kaydedip, cookie isimlerini olusturacagim bir listeye atip,
-        //      liste "en sevdigim cookie" iceriyor mu diye test edebilirim
-        //   B- "en sevdigim cookie" 'nin value'sunun "cikolatali" oldugunu test edebilirim
+            //   A- tum cookieleri kaydedip, cookie isimlerini olusturacagim bir listeye atip,
+            //      liste "en sevdigim cookie" iceriyor mu diye test edebilirim
+            //   B- "en sevdigim cookie" 'nin value'sunun "cikolatali" oldugunu test edebilirim
 
-        // B-yontemi (NullPointerException riski var)
-          Cookie actualCookie =  driver.manage().getCookieNamed("en sevdigim cookie");
-          String expectedCookieValue = "cikolatali";
-          String actualCookieValue = actualCookie.getValue();
+            // B-yontemi (NullPointerException riski var)
+            Cookie actualCookie = driver.manage().getCookieNamed("en sevdigim cookie");
+            String expectedCookieValue = "cikolatali";
+            String actualCookieValue = actualCookie.getValue();
 
-          Assertions.assertEquals(expectedCookieValue,actualCookieValue);
+            Assertions.assertEquals(expectedCookieValue, actualCookieValue);
 
-        // A yontemi
+            // A yontemi
 
             cookieSet = driver.manage().getCookies();
 
-        // tum cookie'lerin isimlerini olusturacagimiz bir listeye ekleyelim
+            // tum cookie'lerin isimlerini olusturacagimiz bir listeye ekleyelim
 
             List<String> cookieIsimleriList = new ArrayList<>();
 
-            for (Cookie eachCookie1 : cookieSet){
+            for (Cookie eachCookie1 : cookieSet) {
                 cookieIsimleriList.add(eachCookie1.getName());
 
             }
 
             //listede en sevdigim cookie bulundugunu test edelim
 
-               Assertions.assertTrue(cookieIsimleriList.contains("en sevdigim cookie"));
+            Assertions.assertTrue(cookieIsimleriList.contains("en sevdigim cookie"));
 
             //8- ismi SOCS olan cookie’yi silin ve silindigini test edin
 
@@ -134,14 +128,14 @@ public class C01_Cookies extends TestBase_Each {
 
             cookieIsimleriList = new ArrayList<>(); // hepsini listeye ekledim
 
-            for ( Cookie eachCookie2 : cookieSet){
+            for (Cookie eachCookie2 : cookieSet) {
                 cookieIsimleriList.add(eachCookie2.getName());
             }
 
             Assertions.assertFalse(cookieIsimleriList.contains("SOCKS"));
 
 
-             //9- tum cookie’leri silin
+            //9- tum cookie’leri silin
 
             driver.manage().deleteAllCookies();
 
@@ -151,14 +145,8 @@ public class C01_Cookies extends TestBase_Each {
             Assertions.assertTrue(cookieSet.isEmpty());
 
 
-
-
-
+        }
 
 
     }
-
-
-
-
 }

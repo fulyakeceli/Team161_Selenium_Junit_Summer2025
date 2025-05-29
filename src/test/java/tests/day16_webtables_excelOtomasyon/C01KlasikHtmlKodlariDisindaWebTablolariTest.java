@@ -23,7 +23,7 @@ public class C01KlasikHtmlKodlariDisindaWebTablolariTest extends TestBase_Each {
 
         //  2. Headers da bulunan basliklari bir liste olarak yazdirin
 
-        List<WebElement> baslikDataElementleriList = driver.findElements(By.xpath("//*[@role='hrow']/*[@role='hdata']"))
+        List<WebElement> baslikDataElementleriList = driver.findElements(By.xpath("//*[@role='hrow']/*[@role='hdata']"));
 
          // sadece role = 'hrow' yapsaydik tum baslik satirini tek bir element olarak getirir
         // ve yazdirirsak boyle yazdirir ve hangisi hangisi bilemem Product Name mi ? Name category mi?
