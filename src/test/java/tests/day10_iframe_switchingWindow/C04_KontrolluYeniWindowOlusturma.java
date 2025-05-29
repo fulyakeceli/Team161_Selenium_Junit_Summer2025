@@ -78,6 +78,7 @@ public class C04_KontrolluYeniWindowOlusturma extends TestBase_Each {
 
 
         ReusableMethods.bekle(3);
+
         // electronics urunlerin acik oldugu window'a donun
         driver.switchTo().window(ikinciWindowWHD);
 
